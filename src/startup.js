@@ -3,7 +3,6 @@ const express = require('express');
 
 const app = express();
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const log = require('node-file-logger');
 const path = require('path');
@@ -14,7 +13,7 @@ const swaggerDocument = require('../swagger.json');
 
 app.use(express.static(path.join(__dirname, '/my-app/build')));
 
-// logger
+// logger setup
 const options = {
   folderPath: './logs/',
   dateBasedFileNaming: true,
@@ -29,14 +28,12 @@ const options = {
 
 log.SetUserOptions(options);
 
+// swagger setup
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 app.use(cors({ origin: true, credentials: true }));
-app.listen(PORT, () => { console.log(`Started at: ${process.env.PORT}, env: ${process.env.NODE_ENV}`); });
-app.use(express.urlencoded({ extended: false }));
+app.listen(PORT, () => { console.log(`Started at: ${process.env.PORT}`); });
 app.use(require('./routes')); // Routes
 
 module.exports = app;

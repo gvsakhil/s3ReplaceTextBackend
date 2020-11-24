@@ -1,5 +1,7 @@
 {
   "search_text": "Please enter Search text",
   "replace_text": "Please enter the Replace text",
-  "path": "Please enter the Path"
+  "path": "Please enter the Path",
+  "modified": "Files modified successfully",
+  "emptyFiles": "Either the files are not present or the folder is incorrect"
 }

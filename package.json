@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=dev npm run swagger && nodemon src/startup.js",
-    "swagger": "swagger-jsdoc -d swaggerDef.js -o swagger.json"
+    "swagger": "swagger-jsdoc -d swaggerDef.js -o swagger.json",
+    "deployProd": "NODE_ENV=prod pm2 start src/startup.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,6 @@
   "homepage": "https://github.com/gvsakhil/s3ReplaceTextBackend#readme",
   "dependencies": {
     "aws-sdk": "^2.798.0",
-    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
@@ -30,7 +30,6 @@
     "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
     "express-validator": "^6.7.0",
-    "helmet": "^4.2.0",
     "node-file-logger": "^0.9.5",
     "swagger-ui-express": "^4.1.5",
     "xss-clean": "^0.1.1"

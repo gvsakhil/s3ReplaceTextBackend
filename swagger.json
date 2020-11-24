@@ -5,7 +5,50 @@
     "description": "API documentation description"
   },
   "swagger": "2.0",
-  "paths": {},
+  "paths": {
+    "/replaceText": {
+      "post": {
+        "tags": [
+          "S3"
+        ],
+        "description": "Replace text of s3 files",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "required": true,
+            "name": "Replace Text Object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "searchText": {
+                  "type": "string"
+                },
+                "replaceText": {
+                  "type": "string"
+                },
+                "folderPath": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "login"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
   "definitions": {},
   "responses": {},
   "parameters": {},
