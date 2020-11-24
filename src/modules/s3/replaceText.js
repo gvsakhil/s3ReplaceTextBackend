@@ -51,6 +51,7 @@ router.post('/',
   ],
   async (req, res) => {
     try {
+      // check validations
       const checkErrors = await Response.checkValidationErrors(req, res);
       if (!checkErrors) {
         const { searchText, replaceText, folderPath } = req.body;
@@ -60,12 +61,13 @@ router.post('/',
           Prefix: `${folderPath}/`,
         };
 
+        // get s3 objects of a folder
         s3.listObjectsV2(params, (err, data) => {
           if (err) {
             return Response.sendError(err.message, 'modules -> s3 -> replaceText', '/', res);
           }
 
-          if (data.Contents.length === 0) return Response.sendResponse(400, messages.emptyFiles, null, res);
+          if (data.Contents.length === 0) return Response.sendResponse(200, messages.emptyFiles, null, res);
 
           data.Contents.forEach((obj) => {
             console.log(obj.Key, '<<<file path');
