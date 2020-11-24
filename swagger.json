@@ -1,0 +1,14 @@
+{
+  "info": {
+    "title": "S3 file text replace API Documentation",
+    "version": "1.0.0",
+    "description": "API documentation description"
+  },
+  "swagger": "2.0",
+  "paths": {},
+  "definitions": {},
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {},
+  "tags": []
+}
